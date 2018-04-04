@@ -1,0 +1,6 @@
+node_modules/
+.idea/
+config.json
+database.sqlite3
+*.css
+*.css.map

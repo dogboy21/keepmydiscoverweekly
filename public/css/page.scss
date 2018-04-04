@@ -1,0 +1,288 @@
+/*!
+ * KeepMyDiscoverWeekly
+ * Copyright (C) 2018 Dogboy21
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+$background-color: #121212;
+$accent-color: #1DB954;
+
+html {
+    height: 100%;
+}
+
+html, body, div, span, h1, p, a, img, ul, li, footer, header, hgroup, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    height: 100%;
+
+    color: #414f57;
+    font-family: Quicksand,sans-serif;
+    font-size: 14pt;
+    font-weight: 300;
+    line-height: 2;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    &:after {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: inherit;
+        z-index: 1;
+        background-color: #ffffff;
+        background-image: url("../img/overlay.png"), url("../img/bg.jpg");
+        background-repeat: repeat, no-repeat;
+        background-size: 100px 100px, cover;
+        background-position: top left, center center;
+        background-attachment: fixed, fixed;
+        filter: blur(6px);
+        transform: scale(1.03);
+    }
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 480px) {
+    html, body {
+        min-width: 320px;
+    }
+}
+
+body.is-loading *, body.is-loading *:before, body.is-loading *:after {
+    animation: none !important;
+    transition: none !important;
+}
+
+@media screen and (max-width: 1680px) {
+    body {
+        font-size: 11pt;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 10pt;
+        line-height: 1.75;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+p {
+    margin: 0 0 1.5em 0;
+    color: #ffffff;
+}
+
+h1 {
+    color: $accent-color;
+    line-height: 1.5;
+    font-size: 1.85em;
+    letter-spacing: 0.22em;
+    margin: 0 0 0.525em 0;
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.65em;
+    }
+}
+
+ul {
+    list-style: disc;
+    margin: 0 0 1.5em 0;
+    padding-left: 1em;
+    li {
+        padding-left: 0.5em;
+    }
+}
+
+#main {
+    position: relative;
+    max-width: 100%;
+    min-width: 27em;
+    padding: 4.5em 3em 3em 3em ;
+    border-radius: 4px;
+    cursor: default;
+    opacity: 0.95;
+    text-align: center;
+    transform-origin: 50% 50%;
+    transform: rotateX(0deg);
+    transition: opacity 1s ease, transform 1s ease;
+    background-color: $background-color;
+
+    .brand {
+        position: relative;
+        display: block;
+        margin-bottom: 1.5em;
+        img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 100%;
+            box-shadow: 0 0 0 1.5em $background-color;
+            background-color: $background-color;
+        }
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: -3em;
+            width: calc(100% + 6em);
+            height: 1px;
+            z-index: -1;
+            background: $accent-color;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main {
+        min-width: 0;
+        width: 100%;
+        padding: 4em 2em 2.5em 2em ;
+    }
+    #main .brand:before {
+        left: -2em;
+        width: calc(100% + 4em);
+    }
+}
+
+body.is-loading #main {
+    opacity: 0;
+    transform: rotateX(15deg);
+}
+
+#footer {
+    align-self: flex-end;
+    width: 100%;
+    padding: 1.5em 0 0 0;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: default;
+    text-align: center;
+
+    .copyright {
+        margin: 0;
+        padding: 0;
+        font-size: 0.9em;
+        list-style: none;
+        li {
+            display: inline-block;
+            margin: 0 0 0 0.45em;
+            padding: 0 0 0 0.85em;
+            border-left: solid 1px rgba(255, 255, 255, 0.5);
+            line-height: 1;
+            &:first-child {
+                border-left: 0;
+            }
+        }
+    }
+}
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    perspective: 1000px;
+    position: relative;
+    min-height: 100%;
+    padding: 1.5em;
+    z-index: 2;
+    > * {
+        z-index: 1;
+    }
+    &:before {
+        content: '';
+        display: block;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #wrapper {
+        padding: 0.75em;
+    }
+}
+
+.btn {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    border-radius: 4px;
+    border: solid 1px $accent-color;
+    line-height: 3.75em;
+    text-align: center;
+    padding: 0 20px;
+    color: #fff;
+    transition: color .2s;
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+#playlists {
+    list-style-type: none;
+    background: #181818;
+    padding: 30px 0;
+    display: inline-block;
+    border-radius: 4px;
+    li {
+        cursor: pointer;
+        transition: color .2s;
+        color: #fff;
+        padding: 3px 80px;
+        a {
+            transition: none;
+        }
+        &:hover {
+            color: $accent-color;
+        }
+        i {
+            padding-right: 5px;
+        }
+        i::before {
+            display: none;
+        }
+    }
+    li.active {
+        i::before {
+            display: inline-block;
+        }
+    }
+}

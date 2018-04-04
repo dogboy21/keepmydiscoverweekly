@@ -1,0 +1,28 @@
+{
+  "name": "keepmydiscoverweekly",
+  "version": "1.0.0",
+  "description": "Automatically archives Spotify's Discover Weekly playlist",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dogboy21/keepmydiscoverweekly.git"
+  },
+  "keywords": [
+    "spotify",
+    "playlist"
+  ],
+  "author": "Dogboy21",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dogboy21/keepmydiscoverweekly/issues"
+  },
+  "homepage": "https://github.com/dogboy21/keepmydiscoverweekly#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "querystring": "^0.2.0",
+    "request": "^2.85.0",
+    "sqlite3": "^4.0.0"
+  }
+}

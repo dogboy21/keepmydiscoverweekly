@@ -1,0 +1,42 @@
+<header>
+    <span class="brand"><img src="{{avatar}}" height="122px" width="122px" /></span>
+    <h1>Welcome, {{username}}</h1>
+    <p>Choose the playlist which should be archived</p>
+</header>
+
+{{#if playlistsFound}}
+    <ul id="playlists">
+        {{#each playlists}}
+            <li data-id="{{this.id}}"><i class="ion-checkmark-round"></i>{{this.name}} <a class="ion-link" target="_blank" href="{{this.uri}}"></a></li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>Unfortunately, we couldn't find any archiveable playlist</p>
+{{/if}}
+
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+<script>
+    document.addEventListener('click', function(e) {
+       if (e.target.parentElement.id !== 'playlists' || !e.target.hasAttribute('data-id')) {
+           return;
+       }
+
+        var request = new XMLHttpRequest();
+        request.open("POST","/api/setplaylist?id=" + e.target.getAttribute('data-id'));
+        request.addEventListener('load', function(ev) {
+            if (request.status !== 200) {
+                alert('Error');
+                //TODO Animation
+                return;
+            }
+
+            var children = e.target.parentElement.children;
+            for (var i = 0; i < children.length; i++) {
+                children[i].classList.remove('active');
+            }
+
+            e.target.classList.add('active');
+        });
+        request.send();
+    });
+</script>
