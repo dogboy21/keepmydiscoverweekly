@@ -7,7 +7,7 @@
 {{#if playlistsFound}}
     <ul id="playlists">
         {{#each playlists}}
-            <li data-id="{{this.id}}"><i class="ion-checkmark-round"></i>{{this.name}} <a class="ion-link" target="_blank" href="{{this.uri}}"></a></li>
+            <li data-id="{{this.id}}" {{#if this.active}}class="active"{{/if}}><i class="ion-checkmark-round"></i>{{this.name}} <a class="ion-link" target="_blank" href="{{this.uri}}"></a></li>
         {{/each}}
     </ul>
 {{else}}
