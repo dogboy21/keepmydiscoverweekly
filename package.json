@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Automatically archives Spotify's Discover Weekly playlist",
   "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dogboy21/keepmydiscoverweekly.git"
