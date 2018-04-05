@@ -256,6 +256,22 @@ body.is-loading #main {
     }
 }
 
+$errorOffset: 40px;
+@keyframes errored {
+    0%   {
+        transform: translateX(0);
+    }
+    25%  {
+        transform: translateX($errorOffset);
+    }
+    75%  {
+        transform: translateX(-$errorOffset);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 #playlists {
     list-style-type: none;
     background: #181818;
@@ -263,8 +279,8 @@ body.is-loading #main {
     display: inline-block;
     border-radius: 4px;
     li {
+        transition: color .2s, transform .2s;
         cursor: pointer;
-        transition: color .2s;
         color: #fff;
         padding: 3px 80px;
         a {
@@ -278,6 +294,10 @@ body.is-loading #main {
         }
         i::before {
             display: none;
+        }
+        &.errored {
+            animation: errored .25s;
+            color: red;
         }
     }
     li.active {
